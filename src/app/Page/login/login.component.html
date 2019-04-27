@@ -1,13 +1,15 @@
-<div class="bcb vh-100" style="display: flex;justify-content: center;align-content: center;margin: auto;">
+<div class="bcb vh-100 flex-x-c ma">
 
-  <div class="content">
-    SGHFGDHGFFSGHFD
+  <div class="box flex-y-cc">
+    <span class="fs-30">Login</span>
+    <div class="flex-x-c mt-20">
+      <span class="fs-25 mr-5">User Name</span>
+      <input type="text" [(ngModel)]="LoginModel.Account" />
+    </div>
+    <div class="flex-x-c mt-20">
+      <span class="fs-25 mr-5">Password</span>
+      <input type="password" [(ngModel)]="LoginModel.Password">
+    </div>
+    <button class="loginbt mt-20" (click)="Login()">Login</button>
   </div>
-
-  <!-- <div>
-    login works!
-  </div>
-  <div>
-    login works2!
-  </div> -->
 </div>

@@ -1,8 +1,61 @@
 /* You can add global styles to this file, and also import other style files */
+
 body {
   margin: 0px;
   padding: 0px;
+  font-family: 'Microsoft JhengHei';
+}
+
+@for $i from 18 through 30 {
+  .fs-#{$i} {
+      font-size: #{$i}px !important;
+  }
+}
+@for $i from 0 through 30 {
+  .br-#{$i} {
+    border-radius: #{$i}px;
+  }
+  .ml-#{$i} {
+    margin-left: #{$i}px;
+  }
+  .mr-#{$i} {
+    margin-right: #{$i}px;
+  }
+  .mt-#{$i} {
+    margin-top: #{$i}px;
+  }
+  .mb-#{$i} {
+    margin-bottom: #{$i}px;
+  }
+}
+.ma{
+  margin: auto;
 }
 .vh-100 {
   height: 100vh;
+}
+.flex-x{
+  display: flex;
+}
+.flex-x-c{
+  display: flex;
+  justify-content: center;
+}
+.flex-x-cc{
+  display: flex;
+  justify-content: center;
+  align-content: center
+}
+.flex-y{
+  display: flex;
+  flex-direction: column;
+}
+.flex-y-c{
+  display: flex;
+  flex-direction: column;
+}
+.flex-y-cc{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
