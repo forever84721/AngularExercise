@@ -1,0 +1,20 @@
+.topbar{
+    display: flex;
+    background-color: rgb(231, 224, 127);
+    
+    width: 100vw;
+    border-width:0 0 5px 0;
+    border-color: rgb(92, 65, 11);
+    border-style: solid;
+    min-height: 50px;
+    max-height: 100px;
+}
+.footer{
+    background-color: rgb(231, 224, 127);
+    border-width:5px 0 0 0;
+    border-color: rgb(92, 65, 11);
+    border-style: solid;
+    height: 50px;
+    width: 100vw;
+    min-height: 50px;
+}

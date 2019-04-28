@@ -1,0 +1,17 @@
+.Container{
+    display: flex;
+    height: 100%;
+}
+.AreasContainer{
+    background-color: rgb(230, 109, 109);
+    width: 150px;
+    flex-shrink: 0;
+    border-width:0 5px 0 0;
+    border-color: rgb(92, 65, 11);
+    border-style: solid;
+}
+.TablesContainer{
+    background-color: rgb(247, 255, 134);
+    width: 100%;
+    
+}
