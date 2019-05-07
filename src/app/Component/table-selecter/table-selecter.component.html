@@ -1,12 +1,12 @@
 <div class="Container">
   <div class="AreasContainer flex-y">
-    <div *ngFor="let item of AreaWithTablesList|async; let i = index" class="flex-x-c mt-5">
+    <div *ngFor="let item of AreaWithTablesList; let i = index" class="flex-x-c mt-5">
       <button mat-raised-button color="primary" style="width: 90%; height: 50px;"
-        (click)="NowAreaId=item.Area.AreaId">{{item.Area.AreaName}}</button>
+        (click)="NowAreaId.next(item.Area.AreaId)">{{item.Area.AreaName}}</button>
     </div>
   </div>
   <div class="TablesContainer">
-    <app-table *ngFor="let item of zxc; let i = index" [TableData]="item" DragBoundary=".TablesContainer">
+    <app-table *ngFor="let item of NowTables; let i = index" [TableData]="item" DragBoundary=".TablesContainer">
     </app-table>
   </div>
 </div>

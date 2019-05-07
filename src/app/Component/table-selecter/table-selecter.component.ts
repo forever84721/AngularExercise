@@ -13,14 +13,14 @@ export class TableSelecterComponent implements OnInit {
 
   constructor(private tableService: TableService) { }
   // AreaWithTablesList = new BehaviorSubject<Array<AreaWithTables>>(new Array<AreaWithTables>());
-  AreaWithTablesList: BehaviorSubject<AreaWithTables[]> = new BehaviorSubject([]);
-  NowAreaId: string;
-  zxc: Table[];
+  AreaWithTablesList: AreaWithTables[] = [];
+  NowAreaId: BehaviorSubject<string> = new BehaviorSubject('');
+  NowTables: Table[];
   ngOnInit() {
-    this.AreaWithTablesList.subscribe((x) => {
-      this.NowAreaId = this.NowAreaId ? x[0].Area.AreaId : this.NowAreaId;
-      const xc = x.find(a => a.Area.AreaId === this.NowAreaId);
-      this.zxc = xc ? xc.Tables : [];
+    this.NowAreaId.subscribe((x) => {
+      // this.NowAreaId = this.NowAreaId ? x[0].Area.AreaId : this.NowAreaId;
+      const temp = this.AreaWithTablesList.find(a => a.Area.AreaId === x);
+      this.NowTables = temp ? temp.Tables : [];
     });
     // combineLatest(this.AreaWithTablesList, this.NowAreaId).subscribe(([AreaWithTablesList, y]) => {
     //   if (AreaWithTablesList.length === 0) {
@@ -35,8 +35,8 @@ export class TableSelecterComponent implements OnInit {
         alert(x.Msg);
       } else {
         const data = x.Data as Array<AreaWithTables>;
-        this.AreaWithTablesList.next(data);
-        // this.NowAreaId.next(this.AreaWithTablesList.getValue()[0].Area.AreaId);
+        this.AreaWithTablesList = data;
+        this.NowAreaId.next(data[0].Area.AreaId);
       }
     });
   }
