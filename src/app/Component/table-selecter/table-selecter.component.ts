@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TableService } from 'src/app/Service/table.service';
-import { Area } from 'src/app/Models/Models';
-import { BaseResponse } from 'src/app/Models/BaseResponse';
+import { BaseResponse, AreaWithTables } from 'src/app/Models/Models';
+import { BehaviorSubject, combineLatest } from 'rxjs';
+import { Table } from 'src/app/Models/DbModels';
 
 @Component({
   selector: 'app-table-selecter',
@@ -11,17 +12,32 @@ import { BaseResponse } from 'src/app/Models/BaseResponse';
 export class TableSelecterComponent implements OnInit {
 
   constructor(private tableService: TableService) { }
-  AreaList: Array<Area>;
+  // AreaWithTablesList = new BehaviorSubject<Array<AreaWithTables>>(new Array<AreaWithTables>());
+  AreaWithTablesList: BehaviorSubject<AreaWithTables[]> = new BehaviorSubject([]);
+  NowAreaId: string;
+  zxc: Table[];
   ngOnInit() {
-    this.tableService.GetArea().toPromise().then((x: BaseResponse) => {
-      if (!x.success) {
-        alert(x.msg);
+    this.AreaWithTablesList.subscribe((x) => {
+      this.NowAreaId = this.NowAreaId ? x[0].Area.AreaId : this.NowAreaId;
+      const xc = x.find(a => a.Area.AreaId === this.NowAreaId);
+      this.zxc = xc ? xc.Tables : [];
+    });
+    // combineLatest(this.AreaWithTablesList, this.NowAreaId).subscribe(([AreaWithTablesList, y]) => {
+    //   if (AreaWithTablesList.length === 0) {
+    //     return;
+    //   }
+    //   this.NowAreaId = AreaWithTablesList[0].Area.AreaId;
+    //   const xc = AreaWithTablesList.find(a => a.Area.AreaId === y);
+    //   this.zxc = xc ? xc.Tables : [];
+    // });
+    this.tableService.GetAreaWithTables().subscribe((x: BaseResponse) => {
+      if (!x.Success) {
+        alert(x.Msg);
       } else {
-        console.log(x.data);
-        this.AreaList = x.data as Array<Area>;
+        const data = x.Data as Array<AreaWithTables>;
+        this.AreaWithTablesList.next(data);
+        // this.NowAreaId.next(this.AreaWithTablesList.getValue()[0].Area.AreaId);
       }
     });
-    // this.AreaList=
   }
-
 }

@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
 export class TableService {
 
   constructor(private httpclient: HttpClient) { }
-  GetArea() {
-    return this.httpclient.get(`${environment.apiUrl}Table/GetArea`);
+  GetAreaWithTables() {
+    return this.httpclient.get(`${environment.apiUrl}Table/GetAreaWithTables`);
   }
 }

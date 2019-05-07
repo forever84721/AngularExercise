@@ -1,9 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { LoginModel } from '../../Models/LoginModel';
 import { AuthService } from 'src/app/Service/auth.service';
-import { BaseResponse } from 'src/app/Models/BaseResponse';
-import { log } from 'util';
 import { Router } from '@angular/router';
+import { BaseResponse, LoginModel } from 'src/app/Models/Models';
 
 @Component({
   selector: 'app-login',
@@ -16,12 +14,13 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
   Login(): void {
-    this.authService.Login(this.LoginModel).toPromise().then((x: BaseResponse) => {
-      if (!x.success) {
-        alert(x.msg);
+    this.authService.Login(this.LoginModel).subscribe((x: BaseResponse) => {
+      if (!x.Success) {
+        alert(x.Msg);
       } else {
-        console.log(x.data);
         this.authService.isLoggedIn = true;
+        AuthService.JWTToken = x.Data as unknown as string;
+        console.log(AuthService.JWTToken);
         this.router.navigate(['../Tables']);
       }
     });

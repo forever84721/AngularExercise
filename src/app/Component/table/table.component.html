@@ -1,4 +1,6 @@
-<div class="example-box" [class.Round]="Round" [cdkDragBoundary]="DragBoundary" cdkDrag>
+<div class="example-box" [class.Round]="TableData.Shape" [cdkDragBoundary]="DragBoundary"
+  [ngStyle]="{'width.px': TableData.Width,'height.px': TableData.Height,'transform':'translate3d('+TableData.X+'px, '+TableData.Y+'px, 0px)'}"
+  cdkDrag>
   <div class="example-handle" cdkDragHandle>
     <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
       <path
@@ -7,5 +9,5 @@
       <path d="M0 0h24v24H0z" fill="none"></path>
     </svg>
   </div>
-  Table {{tableName}}
+  Table {{TableData.TableName}}
 </div>
