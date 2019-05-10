@@ -64,15 +64,30 @@ html,
 body {
   height: 100%;
 }
-// body {
-//   margin: 0;
-//   font-family: Roboto, "Helvetica Neue", sans-serif;
-// }
-.ng-valid[required],
-.ng-valid.required {
-  border-left: 5px solid #42a948; /* green */
-}
 
-.ng-invalid:not(form).ng-touched {
-  border-left: 5px solid #a94442; /* red */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition-delay: 86400s;
+  transition: color 86400s ease-out, background-color 86400s ease-out;
 }
+input:-webkit-autofill {
+  animation: autofill-fix 1s infinite;
+  -webkit-text-fill-color: rgb(0, 0, 0);
+}
+// .ng-valid[required],
+// .ng-valid.required {
+//   border-left: 5px solid #42a948; /* green */
+// }
+// .ng-invalid:not(form).ng-touched {
+//   border-left: 5px solid #a94442; /* red */
+// }
+// @keyframes autofill-fix  {
+//   0% {
+//     background-color: red;
+//   }
+//   100% {
+//     background-color: red;
+//   }
+// }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { AuthService } from 'src/app/Service/auth.service';
 import { Router } from '@angular/router';
 import { BaseResponse, LoginModel } from 'src/app/Models/Models';
@@ -10,11 +10,12 @@ import { BaseResponse, LoginModel } from 'src/app/Models/Models';
 export class LoginComponent implements OnInit {
   LoginModel = new LoginModel();
   constructor(private authService: AuthService, private router: Router) {
-    this.LoginModel.Account = '132132';
-    this.LoginModel.Password = '132132';
   }
   ngOnInit() {
-
+    setTimeout(() => {
+      // tslint:disable-next-line: no-unused-expression
+      (document.getElementsByTagName('body') as any).click;
+    }, 500);
   }
   Login(): void {
     this.authService.Login(this.LoginModel).subscribe((x: BaseResponse) => {

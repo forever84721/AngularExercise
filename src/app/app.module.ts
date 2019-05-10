@@ -8,7 +8,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TablesComponent } from './Page/tables/tables.component';
 import { TableSelecterComponent } from './Component/table-selecter/table-selecter.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatDialogModule } from '@angular/material';
+import { MatButtonModule, MatDialogModule, MatInputModule } from '@angular/material';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { TableComponent } from './Component/table/table.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
@@ -33,7 +33,8 @@ import { MainMenuComponent } from './Component/main-menu/main-menu.component';
     BrowserAnimationsModule,
     MatButtonModule,
     DragDropModule,
-    MatDialogModule
+    MatDialogModule,
+    MatInputModule
   ],
   providers: [
     {

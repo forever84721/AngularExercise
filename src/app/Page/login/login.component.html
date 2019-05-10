@@ -1,40 +1,42 @@
 <div class="bcb vh-100 flex-x-cc ma">
   <form class="box flex-y-cc" #LoginForm="ngForm">
     <span class="fs-30">{{'Login'|translate}}</span>
-    <div class="mt-20">
-      <div class="flex-x-c">
-        <span class="fs-25 mr-5">{{'UserName'|translate}}</span>
-        <input name="Account" type="text" [(ngModel)]="LoginModel.Account" required minlength="4" #Account="ngModel" />
-      </div>
-      <div>
-        <div *ngIf="Account.invalid && (Account.dirty || Account.touched)">
-          <div *ngIf="Account?.errors.required">
-            Account is required.
+    <div class="mt-20 flex-x-c">
+      <mat-form-field appearance="outline">
+        <mat-label>{{'UserName'|translate}}</mat-label>
+        <input matInput placeholder="Placeholder" name="Account" type="text" [(ngModel)]="LoginModel.Account" required
+          minlength="4" class="myinput" #Account="ngModel">
+        <mat-hint style="color:red">
+          <div *ngIf="Account.invalid && (Account.dirty || Account.touched)">
+            <div *ngIf="Account?.errors.required">
+              Account is required.
+            </div>
+            <div *ngIf="Account?.errors.minlength">
+              Account must be at least 4 characters long.
+            </div>
           </div>
-          <div *ngIf="Account?.errors.minlength">
-            Account must be at least 4 characters long.
-          </div>
-        </div>
-      </div>
+        </mat-hint>
+      </mat-form-field>
     </div>
-    <div class="mt-20">
-      <div class="flex-x-c">
-        <span class="fs-25 mr-5">{{'Password'|translate}}</span>
-        <input name="Password" type="password" [(ngModel)]="LoginModel.Password" required minlength="4"
-          #Password="ngModel">
-      </div>
-      <div>
-        <div *ngIf="Password.invalid && (Password.dirty || Password.touched)">
-          <div *ngIf="Password?.errors.required">
-            Password is required.
+    <div class="mt-20 flex-x-c">
+      <mat-form-field appearance="outline">
+        <mat-label>{{'Password'|translate}}</mat-label>
+        <input matInput placeholder="Placeholder" name="Password" type="password" [(ngModel)]="LoginModel.Password"
+          required minlength="4" class="myinput" #Password="ngModel">
+        <mat-hint style="color:red">
+          <div *ngIf="Password.invalid && (Password.dirty || Password.touched)">
+            <div *ngIf="Password?.errors.required">
+              Account is required.
+            </div>
+            <div *ngIf="Password?.errors.minlength">
+              Account must be at least 4 characters long.
+            </div>
           </div>
-          <div *ngIf="Password?.errors.minlength">
-            Password must be at least 4 characters long.
-          </div>
-        </div>
-      </div>
+        </mat-hint>
+      </mat-form-field>
     </div>
-    <button class="loginbt mt-20" (click)="Login()" [disabled]="!LoginForm.form.valid">{{'Login'|translate}}</button>
+    <button mat-raised-button color="primary" (click)="Login()"
+      [disabled]="!LoginForm.form.valid">{{'Login'|translate}}</button>
   </form>
   <!-- <form #heroForm="ngForm">
     <div class="form-group">
