@@ -7,7 +7,7 @@ import { LoginModel } from '../Models/Models';
 })
 export class AuthService {
   constructor(private httpclient: HttpClient) { }
-  public static JWTToken: string;
+  public static JWTToken = '';
   isLoggedIn = false;
   redirectUrl: string;
   Login(model: LoginModel) {
@@ -15,5 +15,6 @@ export class AuthService {
   }
   Logout(): void {
     this.isLoggedIn = false;
+    AuthService.JWTToken = '';
   }
 }

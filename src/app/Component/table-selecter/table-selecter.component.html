@@ -1,6 +1,6 @@
 <div class="Container">
   <div class="AreasContainer flex-y">
-    <div *ngFor="let item of AreaWithTablesList; let i = index" class="flex-x-c mt-5">
+    <div *ngFor="let item of tableService.AreaWithTablesList; let i = index" class="flex-x-c mt-5">
       <button mat-raised-button color="primary" style="width: 90%; height: 50px;"
         (click)="NowAreaId.next(item.Area.AreaId)">{{item.Area.AreaName}}</button>
     </div>

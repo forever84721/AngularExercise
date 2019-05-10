@@ -1,14 +1,56 @@
-<div class="bcb vh-100 flex-x-c ma">
-  <div class="box flex-y-cc">
-    <span class="fs-30">Login</span>
-    <div class="flex-x-c mt-20">
-      <span class="fs-25 mr-5">User Name</span>
-      <input type="text" [(ngModel)]="LoginModel.Account" />
+<div class="bcb vh-100 flex-x-cc ma">
+  <form class="box flex-y-cc" #LoginForm="ngForm">
+    <span class="fs-30">{{'Login'|translate}}</span>
+    <div class="mt-20">
+      <div class="flex-x-c">
+        <span class="fs-25 mr-5">{{'UserName'|translate}}</span>
+        <input name="Account" type="text" [(ngModel)]="LoginModel.Account" required minlength="4" #Account="ngModel" />
+      </div>
+      <div>
+        <div *ngIf="Account.invalid && (Account.dirty || Account.touched)">
+          <div *ngIf="Account?.errors.required">
+            Account is required.
+          </div>
+          <div *ngIf="Account?.errors.minlength">
+            Account must be at least 4 characters long.
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="flex-x-c mt-20">
-      <span class="fs-25 mr-5">Password</span>
-      <input type="password" [(ngModel)]="LoginModel.Password">
+    <div class="mt-20">
+      <div class="flex-x-c">
+        <span class="fs-25 mr-5">{{'Password'|translate}}</span>
+        <input name="Password" type="password" [(ngModel)]="LoginModel.Password" required minlength="4"
+          #Password="ngModel">
+      </div>
+      <div>
+        <div *ngIf="Password.invalid && (Password.dirty || Password.touched)">
+          <div *ngIf="Password?.errors.required">
+            Password is required.
+          </div>
+          <div *ngIf="Password?.errors.minlength">
+            Password must be at least 4 characters long.
+          </div>
+        </div>
+      </div>
     </div>
-    <button class="loginbt mt-20" (click)="Login()">Login</button>
-  </div>
+    <button class="loginbt mt-20" (click)="Login()" [disabled]="!LoginForm.form.valid">{{'Login'|translate}}</button>
+  </form>
+  <!-- <form #heroForm="ngForm">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="Account" required [(ngModel)]="LoginModel.Account" name="Account"
+        #Account="ngModel">
+      <div [hidden]="Account.valid || Account.pristine" class="alert alert-danger">
+        Name is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="alterEgo">Alter Ego</label>
+      <input type="text" class="form-control" id="Password" [(ngModel)]="LoginModel.Password" required name="Password">
+    </div>
+
+    <button type="button" class="btn btn-default">New Hero</button>
+  </form> -->
 </div>

@@ -11,15 +11,15 @@ import { Table } from 'src/app/Models/DbModels';
 })
 export class TableSelecterComponent implements OnInit {
 
-  constructor(private tableService: TableService) { }
+  constructor(public tableService: TableService) { }
   // AreaWithTablesList = new BehaviorSubject<Array<AreaWithTables>>(new Array<AreaWithTables>());
-  AreaWithTablesList: AreaWithTables[] = [];
+  // AreaWithTablesList: AreaWithTables[] = [];
   NowAreaId: BehaviorSubject<string> = new BehaviorSubject('');
   NowTables: Table[];
   ngOnInit() {
     this.NowAreaId.subscribe((x) => {
       // this.NowAreaId = this.NowAreaId ? x[0].Area.AreaId : this.NowAreaId;
-      const temp = this.AreaWithTablesList.find(a => a.Area.AreaId === x);
+      const temp = this.tableService.AreaWithTablesList.find(a => a.Area.AreaId === x);
       this.NowTables = temp ? temp.Tables : [];
     });
     // combineLatest(this.AreaWithTablesList, this.NowAreaId).subscribe(([AreaWithTablesList, y]) => {
@@ -35,7 +35,7 @@ export class TableSelecterComponent implements OnInit {
         alert(x.Msg);
       } else {
         const data = x.Data as Array<AreaWithTables>;
-        this.AreaWithTablesList = data;
+        this.tableService.AreaWithTablesList = data;
         this.NowAreaId.next(data[0].Area.AreaId);
       }
     });

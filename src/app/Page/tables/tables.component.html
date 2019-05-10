@@ -9,7 +9,9 @@
       </span>
     </div>
     <div class="flex" style="flex-grow: 1">
-      456
+      <button mat-raised-button color="primary" (click)="UpdateTables()">{{'Save'|translate}}</button>
+
+      <button mat-raised-button color="primary" (click)="OpenFunMenu()">{{'Function'|translate}}</button>
     </div>
   </div>
   <app-table-selecter style="flex-basis: 100%; flex-grow: 1;"></app-table-selecter>

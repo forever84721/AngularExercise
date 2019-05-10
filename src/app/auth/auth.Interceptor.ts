@@ -7,11 +7,8 @@ import { AuthService } from '../Service/auth.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-
     constructor(private router: Router) {
-
     }
-
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         if (AuthService.JWTToken !== null && AuthService.JWTToken !== '') { // localStorage.getItem('token') != null
             const clonedReq = req.clone({
@@ -23,7 +20,7 @@ export class AuthInterceptor implements HttpInterceptor {
                     err => {
                         if (err.status === 401) {
                             AuthService.JWTToken = ''; // localStorage.removeItem('token');
-                            this.router.navigateByUrl('/user/login');
+                            this.router.navigateByUrl('/login');
                         }
                     }
                 )

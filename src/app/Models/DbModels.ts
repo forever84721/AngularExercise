@@ -1,8 +1,10 @@
 export class Area {
+    public ShopId: string;
     public AreaId: string;
     public AreaName: string;
 }
 export class Table {
+    public ShopId: string;
     public TableId: string;
     public TableName: string;
     public AreaId: string;
