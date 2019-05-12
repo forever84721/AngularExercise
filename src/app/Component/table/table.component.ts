@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Table } from 'src/app/Models/DbModels';
 import { CdkDragEnd } from '@angular/cdk/drag-drop';
+import { Point } from 'src/app/Models/Models';
 
 @Component({
   selector: 'app-table',
@@ -10,6 +11,7 @@ import { CdkDragEnd } from '@angular/cdk/drag-drop';
 export class TableComponent implements OnInit {
   @Input() TableData: Table;
   @Input() DragBoundary: string;
+  @Output() TableClickEmitter = new EventEmitter(); // : EventEmitter<string>
   InitialPoint: Point;
   NowPoint: Point;
   offset = { x: 0, y: 0 };
@@ -18,25 +20,12 @@ export class TableComponent implements OnInit {
     this.InitialPoint = new Point(this.TableData.X, this.TableData.Y);
   }
   dragEnded(event: CdkDragEnd) {
-    // console.log(event);
-    // console.log((event.source._dragRef as any)._previewRect);
     this.offset = { ...(event.source._dragRef as any)._passiveTransform };
-    console.log(this.offset);
-    this.NowPoint = new Point(this.InitialPoint.X + this.offset.x, this.InitialPoint.Y + this.offset.y);
-    console.log(this.NowPoint);
-    this.TableData.X = this.NowPoint.X;
-    this.TableData.Y = this.NowPoint.Y;
+    this.NowPoint = new Point(this.InitialPoint.X + Math.round(this.offset.x), this.InitialPoint.Y + Math.round(this.offset.y));
+    this.TableData.X = Math.round(this.NowPoint.X);
+    this.TableData.Y = Math.round(this.NowPoint.Y);
   }
-}
-class Point {
-  X: number;
-  Y: number;
-  constructor(X: number, Y: number) {
-    this.X = X;
-    this.Y = Y;
-  }
-  Add(X: number, Y: number) {
-    this.X += X;
-    this.Y += Y;
+  TableClick($event: Event) {
+    this.TableClickEmitter.emit($event);
   }
 }

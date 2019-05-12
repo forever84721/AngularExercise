@@ -8,12 +8,13 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TablesComponent } from './Page/tables/tables.component';
 import { TableSelecterComponent } from './Component/table-selecter/table-selecter.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatDialogModule, MatInputModule } from '@angular/material';
+import { MatButtonModule, MatDialogModule, MatInputModule, MatMenuModule } from '@angular/material';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { TableComponent } from './Component/table/table.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { TranslatePipe } from './Pipe/translate.pipe';
 import { MainMenuComponent } from './Component/main-menu/main-menu.component';
+import { DragMenuComponent } from './Component/drag-menu/drag-menu.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,8 @@ import { MainMenuComponent } from './Component/main-menu/main-menu.component';
     TableSelecterComponent,
     TableComponent,
     TranslatePipe,
-    MainMenuComponent
+    MainMenuComponent,
+    DragMenuComponent
   ],
   entryComponents: [MainMenuComponent],
   imports: [
@@ -34,7 +36,8 @@ import { MainMenuComponent } from './Component/main-menu/main-menu.component';
     MatButtonModule,
     DragDropModule,
     MatDialogModule,
-    MatInputModule
+    MatInputModule,
+    MatMenuModule
   ],
   providers: [
     {

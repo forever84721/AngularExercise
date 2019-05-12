@@ -13,3 +13,15 @@ export class AreaWithTables {
   public Area: Area;
   public Tables: Array<Table>;
 }
+export class Point {
+  X: number;
+  Y: number;
+  constructor(X: number, Y: number) {
+    this.X = X;
+    this.Y = Y;
+  }
+  Add(X: number, Y: number) {
+    this.X += X;
+    this.Y += Y;
+  }
+}

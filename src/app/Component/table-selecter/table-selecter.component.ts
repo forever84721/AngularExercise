@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { TableService } from 'src/app/Service/table.service';
 import { BaseResponse, AreaWithTables } from 'src/app/Models/Models';
 import { BehaviorSubject, combineLatest } from 'rxjs';
 import { Table } from 'src/app/Models/DbModels';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-table-selecter',
@@ -10,12 +11,12 @@ import { Table } from 'src/app/Models/DbModels';
   styleUrls: ['./table-selecter.component.scss']
 })
 export class TableSelecterComponent implements OnInit {
-
   constructor(public tableService: TableService) { }
   // AreaWithTablesList = new BehaviorSubject<Array<AreaWithTables>>(new Array<AreaWithTables>());
   // AreaWithTablesList: AreaWithTables[] = [];
   NowAreaId: BehaviorSubject<string> = new BehaviorSubject('');
   NowTables: Table[];
+  @Output() TableClickEmitter = new EventEmitter();
   ngOnInit() {
     this.NowAreaId.subscribe((x) => {
       // this.NowAreaId = this.NowAreaId ? x[0].Area.AreaId : this.NowAreaId;
@@ -39,5 +40,11 @@ export class TableSelecterComponent implements OnInit {
         this.NowAreaId.next(data[0].Area.AreaId);
       }
     });
+  }
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.tableService.AreaWithTablesList, event.previousIndex, event.currentIndex);
+  }
+  TableClick($event: Event) {
+    this.TableClickEmitter.emit($event);
   }
 }

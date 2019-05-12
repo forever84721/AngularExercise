@@ -11,8 +11,16 @@ export class TranslateService {
   }
   public Use(lang: string): void {
     this.CurrentLang = lang;
+    localStorage.setItem('CurrentLang', lang);
   }
-  constructor() { }
+  constructor() {
+    try {
+      this.CurrentLang = localStorage.getItem('CurrentLang');
+    } catch (error) {
+      localStorage.setItem('CurrentLang', 'en-US');
+      this.CurrentLang = localStorage.getItem('CurrentLang');
+    }
+  }
 
 
   public Translate(key: string) {

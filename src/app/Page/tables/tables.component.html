@@ -14,7 +14,8 @@
       <button mat-raised-button color="primary" (click)="OpenFunMenu()">{{'Function'|translate}}</button>
     </div>
   </div>
-  <app-table-selecter style="flex-basis: 100%; flex-grow: 1;"></app-table-selecter>
+  <app-table-selecter style="flex-basis: 100%; flex-grow: 1;overflow: hidden;" (TableClickEmitter)="TableClick($event)">
+  </app-table-selecter>
   <div class="footer">
     footer
   </div>

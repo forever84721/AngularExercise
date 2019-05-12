@@ -21,10 +21,12 @@ export class TablesComponent implements OnInit {
     this.Time = Date.now().toString();
   }
   UpdateTables(): void {
-    this.translateService.Use('en-US');
     this.tableService.UpdateAreaWithTables();
   }
   OpenFunMenu() {
     this.mainMenuDialog.open(MainMenuComponent);
+  }
+  TableClick(TableId: string) {
+    alert('app-table-selecter:' + TableId);
   }
 }

@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
     setTimeout(() => {
       // tslint:disable-next-line: no-unused-expression
       (document.getElementsByTagName('body') as any).click;
-    }, 500);
+    }, 1000);
   }
   Login(): void {
     this.authService.Login(this.LoginModel).subscribe((x: BaseResponse) => {
