@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
       } else {
         this.authService.isLoggedIn = true;
         AuthService.JWTToken = x.Data as unknown as string;
-        console.log(AuthService.JWTToken);
+        // console.log(AuthService.JWTToken);
         this.router.navigate(['../Tables']);
       }
     });

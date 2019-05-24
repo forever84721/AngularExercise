@@ -15,6 +15,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { TranslatePipe } from './Pipe/translate.pipe';
 import { MainMenuComponent } from './Component/main-menu/main-menu.component';
 import { DragMenuComponent } from './Component/drag-menu/drag-menu.component';
+import { OrderComponent } from './Page/order/order.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,8 @@ import { DragMenuComponent } from './Component/drag-menu/drag-menu.component';
     TableComponent,
     TranslatePipe,
     MainMenuComponent,
-    DragMenuComponent
+    DragMenuComponent,
+    OrderComponent
   ],
   entryComponents: [MainMenuComponent],
   imports: [

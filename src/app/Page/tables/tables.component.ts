@@ -3,6 +3,7 @@ import { TranslateService } from './../../Service/translate.service';
 import { TableService } from 'src/app/Service/table.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tables',
@@ -11,7 +12,8 @@ import { MatDialog } from '@angular/material';
 })
 export class TablesComponent implements OnInit {
 
-  constructor(private tableService: TableService, private translateService: TranslateService, private mainMenuDialog: MatDialog) { }
+  // tslint:disable-next-line: max-line-length
+  constructor(private router: Router, private tableService: TableService, private translateService: TranslateService, private mainMenuDialog: MatDialog) { }
   Time = '';
   ngOnInit() {
     setInterval(() => this.UpdateTime(), 1000);
@@ -27,6 +29,8 @@ export class TablesComponent implements OnInit {
     this.mainMenuDialog.open(MainMenuComponent);
   }
   TableClick(TableId: string) {
-    alert('app-table-selecter:' + TableId);
+    console.log('app-table-selecter:' + TableId);
+
+    this.router.navigate(['../Order']);
   }
 }

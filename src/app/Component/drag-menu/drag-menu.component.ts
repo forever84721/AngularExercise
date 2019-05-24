@@ -17,6 +17,9 @@ export class DragMenuComponent implements OnInit {
 
   ngOnInit() {
     try {
+      if (localStorage.getItem('DragMenuPoint') === null) {
+        localStorage.setItem('DragMenuPoint', JSON.stringify(new Point(0, 0)));
+      }
       this.InitialPoint = JSON.parse(localStorage.getItem('DragMenuPoint'));
     } catch (error) {
       localStorage.setItem('DragMenuPoint', JSON.stringify(new Point(0, 0)));

@@ -1,5 +1,6 @@
-<div class="DragMenuBox" [ngStyle]="{'transform':'translate3d('+InitialPoint.X+'px, '+InitialPoint.Y+'px, 0px)'}"
-  cdkDrag [cdkDragBoundary]="DragBoundary" (cdkDragEnded)="dragEnded($event)">
+<div *ngIf="InitialPoint" class="DragMenuBox"
+  [ngStyle]="{'transform':'translate3d('+InitialPoint.X+'px, '+InitialPoint.Y+'px, 0px)'}" cdkDrag
+  [cdkDragBoundary]="DragBoundary" (cdkDragEnded)="dragEnded($event)">
   <button mat-fab color="primary" [matMenuTriggerFor]="animals">Menu</button>
   <div class="Draghandle" cdkDragHandle>
     <svg width="24px" fill="currentColor" viewBox="0 0 24 24">

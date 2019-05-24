@@ -5,7 +5,7 @@
       <mat-form-field appearance="outline">
         <mat-label>{{'UserName'|translate}}</mat-label>
         <input matInput placeholder="Placeholder" name="Account" type="text" [(ngModel)]="LoginModel.Account" required
-          minlength="4" class="myinput" #Account="ngModel">
+          minlength="4" #Account="ngModel">
         <mat-hint style="color:red">
           <div *ngIf="Account.invalid && (Account.dirty || Account.touched)">
             <div *ngIf="Account?.errors.required">
@@ -22,7 +22,7 @@
       <mat-form-field appearance="outline">
         <mat-label>{{'Password'|translate}}</mat-label>
         <input matInput placeholder="Placeholder" name="Password" type="password" [(ngModel)]="LoginModel.Password"
-          required minlength="4" class="myinput" #Password="ngModel">
+          required minlength="4" autocomplete="true" #Password="ngModel">
         <mat-hint style="color:red">
           <div *ngIf="Password.invalid && (Password.dirty || Password.touched)">
             <div *ngIf="Password?.errors.required">
