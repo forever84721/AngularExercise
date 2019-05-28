@@ -25,7 +25,7 @@ export class TableComponent implements OnInit {
     this.TableData.X = Math.round(this.NowPoint.X);
     this.TableData.Y = Math.round(this.NowPoint.Y);
   }
-  TableClick($event: string) {// $event: Event
-    this.TableClickEmitter.emit($event);
+  TableClick(TableId: string) {// $event: Event
+    this.TableClickEmitter.emit(TableId);
   }
 }

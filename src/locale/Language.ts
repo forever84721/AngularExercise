@@ -10,6 +10,7 @@ export let Language = {
     Password: 'Password',
     Save: 'Save',
     Function: 'Function',
+    Close: 'Close'
   },
   'zh-Hant': {
     Login: '登入',
@@ -17,5 +18,6 @@ export let Language = {
     Password: '密碼',
     Save: '儲存',
     Function: '功能',
+    Close: '關閉'
   }
 };

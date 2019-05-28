@@ -7,6 +7,7 @@ import { AreaWithTables } from '../Models/Models';
 })
 export class TableService {
   public AreaWithTablesList: AreaWithTables[] = [];
+  public AreaIndex: number;
   constructor(private httpclient: HttpClient) { }
   GetAreaWithTables() {
     return this.httpclient.get(`${environment.apiUrl}Table/GetAreaWithTables`);

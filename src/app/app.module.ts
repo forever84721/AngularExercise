@@ -8,9 +8,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TablesComponent } from './Page/tables/tables.component';
 import { TableSelecterComponent } from './Component/table-selecter/table-selecter.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatDialogModule, MatInputModule, MatMenuModule } from '@angular/material';
+import { MatButtonModule, MatDialogModule, MatInputModule, MatMenuModule, MatCheckboxModule, MatTableModule } from '@angular/material';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { TableComponent } from './Component/table/table.component';
+import { TableComponent } from './Component/table-selecter/table/table.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { TranslatePipe } from './Pipe/translate.pipe';
 import { MainMenuComponent } from './Component/main-menu/main-menu.component';
@@ -38,8 +38,10 @@ import { OrderComponent } from './Page/order/order.component';
     MatButtonModule,
     DragDropModule,
     MatDialogModule,
+    MatTableModule,
     MatInputModule,
-    MatMenuModule
+    MatMenuModule,
+    MatCheckboxModule,
   ],
   providers: [
     {

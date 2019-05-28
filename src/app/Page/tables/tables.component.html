@@ -1,14 +1,14 @@
 <div class="bcb vh-100 flex-y ma">
   <div class="topbar">
-    <div style="flex-grow: 1">
+    <div style="flex: 1">
       255
     </div>
-    <div class="flex-x-c" style="flex-grow: 1">
+    <div class="flex-x-c" style="flex: 1">
       <span class="fs-25">
         {{Time| date:'yyyy/MM/dd HH:mm:ss'}}
       </span>
     </div>
-    <div class="flex" style="flex-grow: 1">
+    <div class="flex" style="flex: 1">
       <button mat-raised-button color="primary" (click)="UpdateTables()">{{'Save'|translate}}</button>
 
       <button mat-raised-button color="primary" (click)="OpenFunMenu()">{{'Function'|translate}}</button>

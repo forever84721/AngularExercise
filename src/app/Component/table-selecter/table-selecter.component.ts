@@ -31,20 +31,25 @@ export class TableSelecterComponent implements OnInit {
     //   const xc = AreaWithTablesList.find(a => a.Area.AreaId === y);
     //   this.zxc = xc ? xc.Tables : [];
     // });
-    this.tableService.GetAreaWithTables().subscribe((x: BaseResponse) => {
-      if (!x.Success) {
-        alert(x.Msg);
-      } else {
-        const data = x.Data as Array<AreaWithTables>;
-        this.tableService.AreaWithTablesList = data;
-        this.NowAreaId.next(data[0].Area.AreaId);
-      }
-    });
+    if (this.tableService.AreaWithTablesList.length === 0) {
+      this.tableService.GetAreaWithTables().subscribe((x: BaseResponse) => {
+        if (!x.Success) {
+          alert(x.Msg);
+        } else {
+          const data = x.Data as Array<AreaWithTables>;
+          this.tableService.AreaWithTablesList = data;
+          this.tableService.AreaIndex = 0;
+          this.NowAreaId.next(data[this.tableService.AreaIndex].Area.AreaId);
+        }
+      });
+    } else {
+      this.NowAreaId.next(this.tableService.AreaWithTablesList[this.tableService.AreaIndex].Area.AreaId);
+    }
   }
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.tableService.AreaWithTablesList, event.previousIndex, event.currentIndex);
   }
-  TableClick($event: Event) {
-    this.TableClickEmitter.emit($event);
+  TableClick(TableId: string) {
+    this.TableClickEmitter.emit(TableId);
   }
 }
