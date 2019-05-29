@@ -14,3 +14,13 @@ export class Table {
     public Height: number;
     public Shape: number;
 }
+export class FunctionButton {
+    public FunctionGroupId: number;
+    public FunctionButtonId: string;
+    public DisplayText: string;
+    public FontColor: string;
+    public BackgroundColor: number;
+    public BorderColor: number;
+    public Seq: number;
+    public Visible: number;
+}

@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class TablesComponent implements OnInit {
 
   // tslint:disable-next-line: max-line-length
-  constructor(private router: Router, private tableService: TableService, private translateService: TranslateService, private mainMenuDialog: MatDialog) { }
+  constructor(private router: Router, private tableService: TableService, private translateService: TranslateService, private matDialog: MatDialog) { }
   Time = '';
   ngOnInit() {
     setInterval(() => this.UpdateTime(), 1000);
@@ -26,7 +26,9 @@ export class TablesComponent implements OnInit {
     this.tableService.UpdateAreaWithTables();
   }
   OpenFunMenu() {
-    this.mainMenuDialog.open(MainMenuComponent);
+    this.matDialog.open(MainMenuComponent, {
+      id: 'dialog1'
+    });
   }
   TableClick(TableId: string) {
     console.log('app-table-selecter:' + TableId);

@@ -16,6 +16,8 @@ import { TranslatePipe } from './Pipe/translate.pipe';
 import { MainMenuComponent } from './Component/main-menu/main-menu.component';
 import { DragMenuComponent } from './Component/drag-menu/drag-menu.component';
 import { OrderComponent } from './Page/order/order.component';
+import { TableSettingComponent } from './Component/data-setting/table-setting/table-setting.component';
+import { DataSettingComponent } from './Component/data-setting/data-setting.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,9 +28,11 @@ import { OrderComponent } from './Page/order/order.component';
     TranslatePipe,
     MainMenuComponent,
     DragMenuComponent,
-    OrderComponent
+    OrderComponent,
+    TableSettingComponent,
+    DataSettingComponent
   ],
-  entryComponents: [MainMenuComponent],
+  entryComponents: [MainMenuComponent, DataSettingComponent, TableSettingComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
