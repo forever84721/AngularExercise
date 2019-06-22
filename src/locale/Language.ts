@@ -11,7 +11,8 @@ export let Language = {
     Save: 'Save',
     Function: 'Function',
     Close: 'Close',
-    DataSetting: 'Data Setting'
+    DataSetting: 'Data Setting',
+    TableSetting: 'Table Setting'
   },
   'zh-Hant': {
     Login: '登入',
@@ -20,6 +21,7 @@ export let Language = {
     Save: '儲存',
     Function: '功能',
     Close: '關閉',
-    DataSetting: '資料設定'
+    DataSetting: '資料設定',
+    TableSetting: '桌位設定'
   }
 };

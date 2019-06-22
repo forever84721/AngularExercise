@@ -11,4 +11,7 @@ export class FunctionButtonService {
   GetFunctionButtons() {
     return this.httpclient.get(`${environment.apiUrl}FunctionButton/GetFunctionButtons`);
   }
+  GetDataSettingButtons() {
+    return this.httpclient.get(`${environment.apiUrl}FunctionButton/GetDataSettingButtons`);
+  }
 }

@@ -7,26 +7,26 @@ import { AuthService } from '../Service/auth.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-    constructor(private router: Router) {
-    }
-    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        if (AuthService.JWTToken !== null && AuthService.JWTToken !== '') { // localStorage.getItem('token') != null
-            const clonedReq = req.clone({
-                headers: req.headers.set('Authorization', 'Bearer ' + AuthService.JWTToken) // localStorage.getItem('token')
-            });
-            return next.handle(clonedReq).pipe(
-                tap(
-                    succ => { },
-                    err => {
-                        if (err.status === 401) {
-                            AuthService.JWTToken = ''; // localStorage.removeItem('token');
-                            this.router.navigateByUrl('/login');
-                        }
-                    }
-                )
-            );
-        } else {
-            return next.handle(req.clone());
-        }
-    }
+	constructor(private router: Router) {
+	}
+	intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+		if (AuthService.JWTToken !== null && AuthService.JWTToken !== '') { // localStorage.getItem('token') != null
+			const clonedReq = req.clone({
+				headers: req.headers.set('Authorization', 'Bearer ' + AuthService.JWTToken) // localStorage.getItem('token')
+			});
+			return next.handle(clonedReq).pipe(
+				tap(
+					succ => { },
+					err => {
+						if (err.status === 401) {
+							AuthService.JWTToken = ''; // localStorage.removeItem('token');
+							this.router.navigateByUrl('/login');
+						}
+					}
+				)
+			);
+		} else {
+			return next.handle(req.clone());
+		}
+	}
 }

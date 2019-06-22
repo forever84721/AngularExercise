@@ -1,3 +1,6 @@
-<div>
-  data-setting works!
+<div class="body">
+  <button *ngFor="let item of bts; let i = index" mat-raised-button color="primary"
+    (click)="FunctionButtonClick(item.FunctionButtonId)" class="functionbutton"
+    style="border-width: 10px;border-style: solid;"
+    [ngStyle]="{'border-color':item.BorderColor,'background-color':item.BackgroundColor,'color':item.FontColor}">{{item.DisplayText|translate}}</button>
 </div>

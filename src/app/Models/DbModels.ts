@@ -2,6 +2,7 @@ export class Area {
     public ShopId: string;
     public AreaId: string;
     public AreaName: string;
+    public Seq: number;
 }
 export class Table {
     public ShopId: string;
