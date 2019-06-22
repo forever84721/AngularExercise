@@ -27,7 +27,8 @@ export class TablesComponent implements OnInit {
   }
   OpenFunMenu() {
     this.matDialog.open(MainMenuComponent, {
-      id: 'dialog1'
+      id: 'dialog1',
+      panelClass: 'Padding0'
     });
   }
   TableClick(TableId: string) {

@@ -1,3 +1,59 @@
 <div class="body">
-  table-setting works!table-setting works!table-setting works!table-setting works!table-setting works!
+  <div class="Areas-container mat-elevation-z8">
+    <mat-table *ngIf="Areas" [dataSource]="Areas">
+
+      <ng-container matColumnDef="AreaId">
+        <mat-header-cell *matHeaderCellDef> AreaId </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{element.AreaId}}
+        </mat-cell>
+
+      </ng-container>
+
+      <ng-container matColumnDef="AreaName">
+        <mat-header-cell *matHeaderCellDef> AreaName </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span *ngIf="NowEditAreaId!==element.AreaId">{{element.AreaName}}</span>
+          <input *ngIf="NowEditAreaId===element.AreaId" type="text" matInput [(ngModel)]="element.AreaName">
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Seq">
+        <mat-header-cell *matHeaderCellDef> Seq </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span *ngIf="NowEditAreaId!==element.AreaId">{{element.Seq}}</span>
+          <input *ngIf="NowEditAreaId===element.AreaId" type="number" matInput [(ngModel)]="element.Seq">
+        </mat-cell>
+      </ng-container>
+
+
+      <mat-header-row *matHeaderRowDef="AreadisplayedColumns; sticky: true"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: AreadisplayedColumns;" (click)="RowClick(row)"
+        (dblclick)="RowdblClick(row)" [style.background]="NowEditAreaId===row.AreaId ? 'lightblue' : ''">
+      </mat-row>
+    </mat-table>
+  </div>
+  <div class="Areas-container mat-elevation-z8">
+    <table *ngIf="Areas" mat-table [dataSource]="Areas">
+
+      <ng-container matColumnDef="AreaId">
+        <th mat-header-cell *matHeaderCellDef> AreaId </th>
+        <td mat-cell *matCellDef="let element"> {{element.AreaId}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="AreaName">
+        <th mat-header-cell *matHeaderCellDef> AreaName </th>
+        <td mat-cell *matCellDef="let element"> {{element.AreaName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Seq">
+        <th mat-header-cell *matHeaderCellDef> Seq </th>
+        <td mat-cell *matCellDef="let element"> {{element.Seq}} </td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="AreadisplayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: AreadisplayedColumns;"></tr>
+    </table>
+  </div>
 </div>

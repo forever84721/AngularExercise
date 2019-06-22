@@ -18,6 +18,7 @@ import { DragMenuComponent } from './Component/drag-menu/drag-menu.component';
 import { OrderComponent } from './Page/order/order.component';
 import { TableSettingComponent } from './Component/data-setting/table-setting/table-setting.component';
 import { DataSettingComponent } from './Component/data-setting/data-setting.component';
+import { CdkTableModule } from '@angular/cdk/table';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +47,7 @@ import { DataSettingComponent } from './Component/data-setting/data-setting.comp
     MatInputModule,
     MatMenuModule,
     MatCheckboxModule,
+    CdkTableModule
   ],
   providers: [
     {
